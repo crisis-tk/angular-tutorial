@@ -1,22 +1,28 @@
 <mat-card class="form-container">
-    <form>
+    <form #taskForm="ngForm">
         <mat-form-field>
-            <input matInput name="taskId" placeholder="ID" [(ngModel)]="task.id">
+            <input matInput #taskId="ngModel" name="taskId" placeholder="ID" [(ngModel)]="task.id" required pattern="^[0-9]+$">
+            <mat-error *ngIf="taskId.hasError('required')">"ID" は必須項目です。</mat-error>
+            <mat-error *ngIf="taskId.hasError('pattern')">"ID" は数字を入力してください。</mat-error>
         </mat-form-field>
 
         <mat-form-field>
-            <input matInput name="taskTodo" placeholder="やること" [(ngModel)]="task.todo">
+            <input matInput #taskTodo="ngModel" name="taskTodo" placeholder="やること" [(ngModel)]="task.todo" required>
+            <mat-error *ngIf="taskTodo.hasError('required')">"やること" は必ず入力してください。</mat-error>
         </mat-form-field>
 
         <mat-form-field>
-            <mat-select name="taskPriority" placeholder="プライオリティ" [(ngModel)]="task.priority">
+            <mat-select #taskPriority="ngModel" name="taskPriority" placeholder="プライオリティ" [(ngModel)]="task.priority">
                 <mat-option value="すぐやる">すぐやる</mat-option>
                 <mat-option value="あとで">あとで</mat-option>
                 <mat-option value="気が向いたら">気が向いたら</mat-option>
             </mat-select>
         </mat-form-field>
+        
         <div>
-            <button mat-flat-button color="primary" (click)="newTask()">新規作成</button>
+            <button [disabled]="taskForm.invalid" mat-flat-button color="primary" (click)="newTask()">
+                新規作成
+            </button>
         </div>
     </form>
 </mat-card>
