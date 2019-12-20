@@ -1,0 +1,12 @@
+<mat-card style="margin: 10px">
+    <div *ngIf="selected == null; else contentBlock">
+        <mat-spinner></mat-spinner>
+    </div>
+    <ng-template #contentBlock>
+        <mat-card-title>id:{{ selected.id }} の詳細データ</mat-card-title>
+        <mat-card-content>
+            <div>やること：{{ selected.todo }}</div>
+            <div>優先度：{{ selected.priority }}</div>
+        </mat-card-content>
+    </ng-template>
+</mat-card>
