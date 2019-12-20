@@ -32,7 +32,8 @@ export class TaskDataService {
 
   // 新しいタスクを作るメソッド
   addTask(task:Task): Observable<Task> {
-    this.taskList.push(task);
+    const newTask = new Task(task.id, task.todo, task.priority);
+    this.taskList.push(newTask);
     return of(task);
   }
 
