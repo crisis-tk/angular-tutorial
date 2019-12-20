@@ -17,6 +17,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { TaskCreateComponent } from './task-create/task-create.component';
 import { TaskDetailComponent } from './task-detail/task-detail.component';
@@ -41,6 +42,7 @@ import { TaskDetailComponent } from './task-detail/task-detail.component';
     MatSelectModule,
     MatButtonModule,
     FormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
