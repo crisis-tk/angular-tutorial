@@ -7,6 +7,7 @@ import { TaskDetailComponent } from './task-detail/task-detail.component';
 const routes: Routes = [
   {path:'create',     component:TaskCreateComponent},
   {path:'detail/:id', component:TaskDetailComponent},
+  { path: 'user-list', loadChildren: () => import('./users/users.module').then(m => m.UsersModule) },
 ];
 
 @NgModule({

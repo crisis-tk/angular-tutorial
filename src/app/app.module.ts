@@ -22,6 +22,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { TaskCreateComponent } from './task-create/task-create.component';
 import { TaskDetailComponent } from './task-detail/task-detail.component';
 
+import { AuthModule } from './auth/auth.module';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,6 +45,7 @@ import { TaskDetailComponent } from './task-detail/task-detail.component';
     MatButtonModule,
     FormsModule,
     HttpClientModule,
+    AuthModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
