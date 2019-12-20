@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Task } from '../task';
 import { Router } from '@angular/router';
+import { TaskDataService } from '../task-data.service';
 
 @Component({
   selector: 'app-task-table',
@@ -9,11 +10,7 @@ import { Router } from '@angular/router';
 })
 export class TaskTableComponent implements OnInit {
   // プロパティ
-  taskList:Task[] = [
-    new Task( 1, 'アプリのデザイン', 'すぐやる'),
-    new Task( 2, '実装', 'なるべく早く'),
-    new Task( 3, 'テスト', '気が向いたら'),
-  ];
+  taskList:Task[] = [];
   selected:string = '';
 
   // メソッド
@@ -30,7 +27,12 @@ export class TaskTableComponent implements OnInit {
     }
   }
 
-  constructor(private router:Router) { }
+  constructor(private router:Router, private taskDataService:TaskDataService) { }
   ngOnInit() {
+    // このモジュールが呼び出されたときに実行される処理を書く.
+    // サービスモジュール：TaskDataService のメソッドを呼び出す.
+    this.taskDataService.getTaskList().subscribe(
+      (datas) => this.taskList = datas
+      );
   }
 }
